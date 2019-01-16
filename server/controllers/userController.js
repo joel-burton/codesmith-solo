@@ -7,9 +7,9 @@ const user = {};
 user.create = (req, res, next) => {
   const { username, password } = req.body;
   const query = q.createUser(username, password);
-  db.one(query)
-    .then((user) => {
-      console.log(Object.keys(user));
+  db.one(query.string, query.values)
+    .then((data) => {
+      console.log(Object.keys(data));
       next();
     })
     .catch((err) => {
