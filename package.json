@@ -1,0 +1,23 @@
+{
+  "name": "solo",
+  "version": "1.0.0",
+  "description": "codesmith solo project",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node ./server/index.js",
+    "dev": "nodemon ./server/index.js"
+  },
+  "author": "joel burton",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "pg-promise": "^8.5.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
