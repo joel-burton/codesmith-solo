@@ -14,6 +14,13 @@ const app = express();
 // default middleware for every request
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use((req, res, next) => {
+  res.locals.error = {};
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+  next();
+});
 
 // default page
 app.get('/', (req, res) => res.send('please sign up or sign in'));
@@ -24,7 +31,6 @@ app.use('/character', character);
 
 // ERROR HANDLER //
 app.use((err, req, res, next) => {
-  const { message, code } = res.locals.error;
   switch (err.type) {
     // user errors
     case 'user':
@@ -32,9 +38,9 @@ app.use((err, req, res, next) => {
       return res.status(401).send('You\'re not authorized to do that');
 
     case 'db':
-      console.log(`database error: ${message}`);
+      console.log(`database error: ${res.locals.error.message}`);
 
-      return res.status(500).send(message);
+      return res.status(500).send(res.locals.error.message);
 
     // default error
     default:

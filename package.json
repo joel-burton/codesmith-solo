@@ -4,9 +4,11 @@
   "description": "codesmith solo project",
   "main": "server/index.js",
   "scripts": {
-    "test": "test",
     "start": "node ./server/index.js",
-    "dev": "nodemon ./server/index.js"
+    "build": "webpack",
+    "dev": "webpack-dev-server",
+    "server": "nodemon ./server/index.js",
+    "test": "test"
   },
   "author": "joel burton",
   "license": "ISC",
@@ -15,9 +17,18 @@
     "cookie-parser": "^1.4.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
-    "pg-promise": "^8.5.4"
+    "pg-promise": "^8.5.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "nodemon": "^1.18.9",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
   }
 }

@@ -1,12 +1,13 @@
 const express = require('express');
+const characterController = require('../controllers/characterController');
 
 const router = express.Router();
 
-// gets data for a single character
-router.get('/', (req, res) => res.send('data for a single character sheet'));
+// returns data for a single character
+router.post('/', characterController.getOne, (req, res) => res.json(res.locals.character));
 
-// creates a new character in DB
-router.post('/', (req, res) => res.send('returns created character data from DB'));
+// creates a new character in db OR finds a specific character
+router.post('/create', characterController.create, (req, res) => res.json(res.locals.character));
 
 // updates existing character in DB
 router.put('/', (req, res) => res.send('returns updated character record'));
